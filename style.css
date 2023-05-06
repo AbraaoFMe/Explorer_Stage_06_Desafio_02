@@ -1,0 +1,241 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+
+    --ff: 'Roboto', sans-serif;
+    --ff-secondary: 'Roboto Mono', monospace;
+
+    --bg-color: hsla(0, 0%, 0%, 1);
+    --fc-primary: hsla(240, 9%, 89%, 1);
+    --fc-remove: hsla(355, 91%, 66%, 1);
+    --fc-favorite-button-primary: hsla(0, 0%, 100%, 1);
+    --fc-favorite-button-secondary: hsla(195, 91%, 25%, 1);
+
+    --fc-search-input: hsla(240, 6%, 51%, 1);
+    --bg-search-input: hsla(191, 65%, 7%, 1);
+
+    --table-border: hsla(191, 31%, 42%, 1);
+    --table-header-bg: hsla(195, 89%, 14%, 1);
+    --table-row-bg-odd: hsla(195, 61%, 6%, 0.5);
+    --table-row-bg-even: hsla(192, 65%, 7%, 1);
+
+    --fc-no-favorite: hsla(189, 4%, 32%, 1);
+}
+
+.sr-only {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    padding: 0;
+
+    margin: -1px;
+    overflow: hidden;
+
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+
+    border-width: 0;
+}
+
+.hide {
+    display: none;
+}
+
+body {
+    font-size: 1.6rem;
+    color: var(--fc-primary);
+
+    background-color: var(--bg-color);
+}
+
+body,
+button,
+input {
+    font-family: var(--ff);
+
+}
+
+#app {
+    max-width: 112rem;
+
+    margin: auto;
+    padding: 11.5rem 2rem 8rem;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 8.7rem;
+}
+
+header .input-search {
+    display: flex;
+    align-items: flex-start;
+    gap: .8rem;
+
+    height: 4.8rem;
+}
+
+header .input-search input,
+header .input-search button {
+    height: 100%;
+}
+
+header .input-search input {
+    background-color: var(--bg-search-input);
+    color: var(--fc-search-input);
+
+    border: none;
+    border-radius: .5rem;
+
+    width: 46.2rem;
+    padding: 1.6rem;
+
+    font-size: 16px;
+    line-height: 100%;
+}
+
+header .input-search .add-button {
+    background-color: var(--fc-favorite-button-secondary);
+    color: var(--fc-favorite-button-primary);
+    fill: var(--fc-favorite-button-primary);
+
+    border: none;
+    border-radius: .5rem;
+
+    width: 17rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .8rem;
+
+    padding: 1.2rem 3.2rem;
+
+    text-transform: uppercase;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+header .input-search .add-button:hover {
+    background-color: var(--fc-favorite-button-primary);
+    color: var(--fc-favorite-button-secondary);
+    fill: var(--fc-favorite-button-secondary);
+}
+
+table {
+    width: 100%;
+    border: 1px solid var(--table-border);
+    border-collapse: separate;
+    border-spacing: 0;  
+    border-radius: 1.2rem;
+    font-size: 2rem;
+}
+
+table thead {
+    background-color: var(--table-header-bg);
+    font-weight: bold;
+    text-align: left;
+}
+
+table thead th {
+    border: none;
+}
+
+table thead tr th {
+    padding: 1.6rem 4rem;
+}
+
+table thead tr th:first-child {
+    border-top-left-radius: 1.2rem;
+}
+
+table thead tr th:last-child {
+    border-top-right-radius: 1.2rem;
+}
+
+table tbody tr td{
+    border-top: 1px solid var(--table-border);
+}
+
+table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 1.2rem;
+}
+
+table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 1.2rem;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: var(--table-row-bg-odd);
+}
+
+table tbody tr:nth-child(even) {
+    background-color: var(--table-row-bg-even);
+}
+
+table tbody tr td {
+    padding: 2.4rem 4rem;
+}
+
+table tbody tr td .user {
+    display: flex;
+    gap: 1.6rem;
+    align-items: center;
+}
+
+table tbody tr td .user img {
+    width: 5.6rem;
+    height: 5.6rem;
+
+    border-radius: 50%;
+}
+
+table tbody tr td .user a {
+    text-decoration: none;
+    color: var(--fc-primary);
+}
+
+table tbody tr td .remove {
+    font-weight: bold;
+    font-size: 2rem;
+
+    color: var(--fc-remove);
+
+    background: none;
+    border: none;
+
+    cursor: pointer;
+}
+
+table tbody tr .no-favorites {
+    /* height: 62.4rem; */
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6rem;
+
+    color: var(--fc-no-favorite);
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 25px;
+
+    font-family: var(--ff-secondary)
+}
+
+table tbody tr .no-favorites img {
+    width: 13.2rem;
+}
