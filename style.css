@@ -64,6 +64,10 @@ input {
 
 #app {
     max-width: 112rem;
+    height: 100vh;
+
+    display: grid;
+    grid-template-rows: auto 1fr;
 
     margin: auto;
     padding: 11.5rem 2rem 8rem;
@@ -134,12 +138,38 @@ header .input-search .add-button:hover {
     fill: var(--fc-favorite-button-secondary);
 }
 
+.table-wrapper {
+    overflow-y: overlay;
+    
+    align-self: start;
+    max-height: 100%;
+
+    border: 1px solid var(--table-border);
+    border-radius: 1.2rem;
+}
+
+.table-wrapper::-webkit-scrollbar {
+    width: 2.1rem;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    margin-block-start: 6rem;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background-color: var(--table-border);
+    border: solid 7px transparent;
+    background-clip: padding-box;
+    border-radius: 1rem;
+    width: .6rem;
+    height: 12.2rem;
+}
+
 table {
     width: 100%;
-    border: 1px solid var(--table-border);
     border-collapse: separate;
     border-spacing: 0;  
-    border-radius: 1.2rem;
+   
     font-size: 2rem;
 }
 
@@ -147,6 +177,9 @@ table thead {
     background-color: var(--table-header-bg);
     font-weight: bold;
     text-align: left;
+
+    position: sticky;
+    top: 0;
 }
 
 table thead th {
@@ -157,57 +190,41 @@ table thead tr th {
     padding: 1.6rem 4rem;
 }
 
-table thead tr th:first-child {
-    border-top-left-radius: 1.2rem;
-}
-
-table thead tr th:last-child {
-    border-top-right-radius: 1.2rem;
-}
-
-table tbody tr td{
+table tbody.favorites-list tr td{
     border-top: 1px solid var(--table-border);
 }
 
-table tbody tr:last-child td:first-child {
-    border-bottom-left-radius: 1.2rem;
-}
-
-table tbody tr:last-child td:last-child {
-    border-bottom-right-radius: 1.2rem;
-}
-
-table tbody tr:nth-child(odd) {
+table tbody.favorites-list tr:nth-child(odd) {
     background-color: var(--table-row-bg-odd);
 }
 
-table tbody tr:nth-child(even) {
+table tbody.favorites-list tr:nth-child(even) {
     background-color: var(--table-row-bg-even);
 }
 
-table tbody tr td {
+table tbody.favorites-list tr td {
     padding: 2.4rem 4rem;
 }
 
-table tbody tr td .user {
+table tbody.favorites-list tr td .user {
     display: flex;
     gap: 1.6rem;
     align-items: center;
 }
 
-table tbody tr td .user img {
+table tbody.favorites-list tr td .user img {
     width: 5.6rem;
     height: 5.6rem;
 
     border-radius: 50%;
 }
 
-table tbody tr td .user a {
+table tbody.favorites-list tr td .user a {
     text-decoration: none;
     color: var(--fc-primary);
 }
 
-table tbody tr td .remove {
+table tbody.favorites-list tr td .remove {
     font-weight: bold;
     font-size: 2rem;
 
@@ -219,9 +236,8 @@ table tbody tr td .remove {
     cursor: pointer;
 }
 
-table tbody tr .no-favorites {
-    /* height: 62.4rem; */
-    width: 100%;
+table tbody.no-favorites tr td div {
+    height: 40rem;
 
     display: flex;
     align-items: center;
@@ -236,6 +252,6 @@ table tbody tr .no-favorites {
     font-family: var(--ff-secondary)
 }
 
-table tbody tr .no-favorites img {
+table tbody.no-favorites tr td div img {
     width: 13.2rem;
 }

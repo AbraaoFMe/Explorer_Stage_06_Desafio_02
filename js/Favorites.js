@@ -48,7 +48,8 @@ class Favorites {
 export class FavoritesView extends Favorites {
     constructor(root) {
         super(root)
-        this.tbody = this.root.querySelector('tbody')
+        this.mainTBody = this.root.querySelector('tbody.favorites-list')
+        this.emptyTBody = this.root.querySelector('tbody.no-favorites')
 
         this.onadd()
         this.update()
@@ -80,6 +81,23 @@ export class FavoritesView extends Favorites {
     update() {
         this.removeAllTr()
 
+        if(this.entries.length == 0) {
+            this.empty()
+        } else {
+            this.list()
+        }
+
+    }
+
+    empty() {
+        this.emptyTBody.classList.remove("hide")
+        this.mainTBody.classList.add("hide")
+    }
+
+    list() {
+        this.emptyTBody.classList.add("hide")
+        this.mainTBody.classList.remove("hide")
+        
         this.entries.forEach(entry => this.createRow(entry))
     }
 
@@ -117,11 +135,11 @@ export class FavoritesView extends Favorites {
             }
         }
 
-        this.tbody.appendChild(tr)
+        this.mainTBody.appendChild(tr)
     }
 
     removeAllTr() {
-        this.tbody.querySelectorAll('tr')
+        this.mainTBody.querySelectorAll('tr')
             .forEach(tr => tr.remove())
     }
 }
